@@ -21,9 +21,17 @@ Projekt se skládá ze dvou hlavních částí:
 
 ```mermaid
 graph TD
-    A[Alice (Faraday Client)] -->|E2EE Encrypted Blob| B(Alice's Cage - Server)
-    B -->|Federation Protocol| C(Bob's Cage - Server)
-    C -->|Push| D[Bob (Faraday Client)]
-    D -->|Decryption Key| D
-    style B fill:#f9f,stroke:#333,stroke-width:2px
-    style C fill:#f9f,stroke:#333,stroke-width:2px
+    A[Alice (Faraday Klient)] -->|1. E2EE Šifrování| B(The Cage - Server Alice)
+    B -->|2. Přenos přes Federaci| C(The Cage - Server Bob)
+    C -->|3. Push/Doručení| D[Bob (Faraday Klient)]
+    D -->|4. Dešifrování| D
+    
+    subgraph Klíčové Zabezpečení
+        K[Privátní Klíče]
+    end
+    
+    K -- Držené výhradně klienty --> A
+    K -- Držené výhradně klienty --> D
+    
+    style B fill:#f2f2f2, stroke:#7C3AED, stroke-width:2px, color:#333;
+    style C fill:#f2f2f2, stroke:#0D9488, stroke-width:2px, color:#333;
