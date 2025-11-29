@@ -18,12 +18,3 @@ Projekt se skládá ze dvou hlavních částí:
 
 1.  **The Cage (Server):** Self-hosted server, který si uživatel provozuje doma (Raspberry Pi, VPS). Je navržen jako "Zero-Knowledge" – server vidí pouze šifrovaný šum, nemá přístup k klíčům a neuchovává logy.
 2.  **Faraday (Klient):** Webová (Vue.js) a mobilní aplikace, která zajišťuje **End-to-End šifrování (E2EE)** přímo na zařízení.
-
-graph TD
-    A["Alice (Faraday Klient)"] -->|"1. E2EE Šifrovaná zpráva"| B[("Alice's Cage (Server)")]
-    B -->|"2. Federace (Matrix)"| C[("Bob's Cage (Server)")]
-    C -->|"3. Push notifikace"| D["Bob (Faraday Klient)"]
-    D -->|"4. Dešifrování klíčem"| D
-
-    style B fill:#f9f,stroke:#333,stroke-width:2px
-    style C fill:#f9f,stroke:#333,stroke-width:2px
